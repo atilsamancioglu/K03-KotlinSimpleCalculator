@@ -3,11 +3,12 @@ package com.atilsamancioglu.kotlinsimplecalculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
+import com.atilsamancioglu.kotlinsimplecalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var myString : String
+    private lateinit var binding: ActivityMainBinding
 
     var number1 : Int? = null
     var number2 : Int? = null
@@ -15,7 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         myString = ""
 
@@ -23,16 +26,16 @@ class MainActivity : AppCompatActivity() {
 
     fun mySum(view : View) {
 
-        number1 = editText.text.toString().toIntOrNull()
-        number2 = editText2.text.toString().toIntOrNull()
+        number1 = binding.editText.text.toString().toIntOrNull()
+        number2 = binding.editText2.text.toString().toIntOrNull()
 
         if (number1 == null || number2 == null ) {
 
-            resultText.text = "Error!"
+            binding.resultText.text = "Error!"
 
         } else {
             result = number1!! + number2!!
-            resultText.text = "Result: $result"
+            binding.resultText.text = "Result: $result"
         }
 
 
@@ -42,16 +45,16 @@ class MainActivity : AppCompatActivity() {
 
     fun mySub(view : View) {
 
-        number1 = editText.text.toString().toIntOrNull()
-        number2 = editText2.text.toString().toIntOrNull()
+        number1 = binding.editText.text.toString().toIntOrNull()
+        number2 = binding.editText2.text.toString().toIntOrNull()
 
         if (number1 == null || number2 == null ) {
 
-            resultText.text = "Error!"
+            binding.resultText.text = "Error!"
 
         } else {
             result = number1!! - number2!!
-            resultText.text = "Result: $result"
+            binding.resultText.text = "Result: $result"
         }
 
 
@@ -59,16 +62,16 @@ class MainActivity : AppCompatActivity() {
 
     fun myMultiply(view: View) {
 
-        number1 = editText.text.toString().toIntOrNull()
-        number2 = editText2.text.toString().toIntOrNull()
+        number1 = binding.editText.text.toString().toIntOrNull()
+        number2 = binding.editText2.text.toString().toIntOrNull()
 
         if (number1 == null || number2 == null ) {
 
-            resultText.text = "Error!"
+            binding.resultText.text = "Error!"
 
         } else {
             result = number1!! * number2!!
-            resultText.text = "Result: $result"
+            binding.resultText.text = "Result: $result"
         }
 
 
@@ -76,16 +79,16 @@ class MainActivity : AppCompatActivity() {
 
     fun myDiv(view: View) {
 
-        number1 = editText.text.toString().toIntOrNull()
-        number2 = editText2.text.toString().toIntOrNull()
+        number1 = binding.editText.text.toString().toIntOrNull()
+        number2 = binding.editText2.text.toString().toIntOrNull()
 
         if (number1 == null || number2 == null ) {
 
-            resultText.text = "Error!"
+            binding.resultText.text = "Error!"
 
         } else {
             result = number1!! / number2!!
-            resultText.text = "Result: $result"
+            binding.resultText.text = "Result: $result"
         }
 
     }
